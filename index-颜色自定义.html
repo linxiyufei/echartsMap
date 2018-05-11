@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地图</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            height: 80%;
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <script src="http://cdn.bootcss.com/echarts/3.2.2/echarts.min.js"></script>
+    <script src="china.js"></script>
+
+
+    <!-- <script src="echarts-3.3.1.min.js"></script> -->
+    <script>
+        
+        var map = echarts.init(document.querySelector('.container'));
+        
+        option = {
+            visualMap: {
+                show:false,
+                min: 0,
+                max: 1000,
+                left: 'left',
+                top: 'bottom',
+
+                calculable: false,
+                orient: 'horizontal',
+                inRange: {
+                    color: ['#000', '#fff'],
+                    symbolSize: [30, 100]
+                },
+                splitList: [
+                    {
+                        label:'北京',start:1,end:1,color:'#9AD0F3'
+                    },
+                    {
+                        label:'天津',start:2,end:2,color:'#2D8AE4'
+                    },
+                    {
+                        label:'上海',start:3,end:3,color:'#9BD1F3'
+                    },
+                    {
+                        label:'重庆',start:4,end:4,color:'#499DE8'
+                    },
+                    {
+                        label:'河北',start:5,end:5,color:'#53A4EA'
+                    },
+                    {
+                        label:'河南',start:6,end:6,color:'#A3D6F5'
+                    },
+                    {
+                        label:'云南',start:7,end:7,color:'#006EDD'
+                    },
+                    {
+                        label:'辽宁',start:8,end:8,color:'#97CFF3'
+                    },
+                    {
+                        label:'黑龙江',start:9,end:9,color:'#58A7EA'
+                    },
+                    {
+                        label:'湖南',start:10,end:10,color:'#BCE8FA'
+                    },
+                    {
+                        label:'安徽',start:11,end:11,color:'#D4F7FD'
+                    },
+                    {
+                        label:'山东',start:12,end:12,color:'#BEE9FA'
+                    },
+                    {
+                        label:'新疆',start:13,end:13,color:'#469BE7'
+                    },
+                    {
+                        label:'江苏',start:14,end:14,color:'#0B76E0'
+                    },
+                    {
+                        label:'浙江',start:15,end:15,color:'#3A94E5'
+                    },
+                    {
+                        label:'江西',start:16,end:16,color:'#A4D8F6'
+                    },
+                    {
+                        label:'湖北',start:17,end:17,color:'#53A3E9'
+                    },
+                    {
+                        label:'广西',start:18,end:18,color:'#CBF2FC'
+                    },
+                    {
+                        label:'甘肃',start:19,end:19,color:'#54A3E9'
+                    },
+                    {
+                        label:'山西',start:20,end:20,color:'#87C6F1'
+                    },
+                    {
+                        label:'内蒙古',start:21,end:21,color:'#A3D8F7'
+                    },
+                    {
+                        label:'陕西',start:22,end:22,color:'#C7E8FA'
+                    },
+                    {
+                        label:'吉林',start:23,end:23,color:'#BEE9FA'
+                    },
+                    {
+                        label:'福建',start:24,end:24,color:'#C5EEFB'
+                    },
+                    {
+                        label:'贵州',start:25,end:25,color:'#C5EEFB'
+                    },
+                    {
+                        label:'广东',start:26,end:26,color:'#4EA0E9'
+                    },
+                    {
+                        label:'青海',start:27,end:27,color:'#3A94E6'
+                    },
+                    {
+                        label:'西藏',start:28,end:28,color:'#2A89E3'
+                    },
+                    {
+                        label:'四川',start:29,end:29,color:'#D9FAFF'
+                    },
+                    {
+                        label:'宁夏',start:30,end:30,color:'#97D0F4'
+                    },
+                    {
+                        label:'海南',start:31,end:31,color:'#BCE8FA'
+                    },
+                    {
+                        label:'台湾',start:32,end:32,color:'#0773DE'
+                    },
+                    {
+                        label:'香港',start:33,end:33,color:'#006EDD'
+                    },
+                    {
+                        label:'澳门',start:34,end:34,color:'#006EDD'
+                    }
+                ]
+            },
+            tooltip: {
+                padding: 0,
+                enterable: true,
+                transitionDuration: 1,
+                textStyle: {
+                    color: '#000',
+                    decoration: 'none'
+                },
+                formatter: function(params) {
+                    console.log(params)
+                    var tipHtml = '';
+                    tipHtml = '<div style="height:40px;width:100px;border-radius:5px;background:#e4393c;box-shadow:0 0 10px 2px #aaa;line-height: 40px;text-align: center;color: #fff;">' +
+                            params.data.name + "  (" + params.data.tipData[1] + ")"
+                        '</div>';
+                    return tipHtml;
+                }
+            },
+            series: [{
+                name: 'iphone4',
+                type: 'map',
+                mapType: 'china',
+                itemStyle: {
+                    normal: {
+                        borderColor: '#fff',
+                        areaColor: '#3A94E6',
+                        borderWidth: 2,
+                        label: {
+                            show: true
+                        }
+                    },
+                    emphasis: {
+                        label: {
+                            show: true
+                        }
+                    }
+                },
+                data: [{
+                        name: '北京',
+                        value: 1,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '天津',
+                        value: 2,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '上海',
+                        value: 3,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '重庆',
+                        value: 4,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '河北',
+                        value: 5,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '河南',
+                        value: 6,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '云南',
+                        value: 7,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '辽宁',
+                        value: 8,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '黑龙江',
+                        value: 9,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '湖南',
+                        value: 10,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '安徽',
+                        value: 11,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '山东',
+                        value: 12,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '新疆',
+                        value: 13,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '江苏',
+                        value: 14,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '浙江',
+                        value: 15,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '江西',
+                        value: 16,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '湖北',
+                        value: 17,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '广西',
+                        value: 18,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '甘肃',
+                        value: 19,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '山西',
+                        value: 20,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '内蒙古',
+                        value: 21,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '陕西',
+                        value: 22,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '吉林',
+                        value: 23,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '福建',
+                        value: 24,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '贵州',
+                        value: 25,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '广东',
+                        value: 26,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '青海',
+                        value: 27,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '西藏',
+                        value: 28,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '四川',
+                        value: 29,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '宁夏',
+                        value: 30,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '海南',
+                        value: 31,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '台湾',
+                        value: 32,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '香港',
+                        value: 33,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '澳门',
+                        value: 34,
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    }
+                ]
+            }, ]
+        }
+        map.setOption(option);
+
+    </script>
+</body>
+</html>

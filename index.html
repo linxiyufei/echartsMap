@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地图</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            height: 80%;
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <script src="echarts.min-3.2.2.js"></script>
+    <script src="china.js"></script>
+
+
+    <!-- <script src="echarts-3.3.1.min.js"></script> -->
+    <script>
+        
+        var map = echarts.init(document.querySelector('.container'));
+        
+        option = {
+            visualMap: {
+                show:false,
+                min: 0,
+                max: 1000,
+                left: 'left',
+                top: 'bottom',
+                
+                calculable: false,
+                orient: 'horizontal',
+                inRange: {
+                    color: ['#e0ffff', '#006edd'],
+                    symbolSize: [30, 100]
+                }
+            },
+            tooltip: {
+                padding: 0,
+                enterable: true,
+                transitionDuration: 1,
+                textStyle: {
+                    color: '#000',
+                    decoration: 'none',
+                },
+                formatter: function(params) {
+                    console.log(params)
+                    var tipHtml = '';
+                    tipHtml = '<div style="height:40px;width:100px;border-radius:5px;background:#e4393c;box-shadow:0 0 10px 2px #aaa;line-height: 40px;text-align: center;color: #fff;">' +
+                            params.data.name + "  (" + params.data.tipData[1] + ")"
+                        '</div>';
+                    return tipHtml;
+                }
+            },
+            series: [{
+                name: 'iphone4',
+                type: 'map',
+                mapType: 'china',
+                itemStyle: {
+                    normal: {
+                        borderColor: '#fff',
+                        areaColor: '#54FF9F',
+                        borderWidth: 2,
+                        label: {
+                            show: true
+                        }
+                    },
+                    emphasis: {
+                        label: {
+                            show: true
+                        }
+                    }
+                },
+                data: [{
+                        name: '北京',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '天津',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '上海',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '重庆',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '河北',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '河南',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '云南',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '辽宁',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '黑龙江',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '湖南',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '安徽',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '山东',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '新疆',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '江苏',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '浙江',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '江西',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '湖北',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '广西',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '甘肃',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '山西',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '内蒙古',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '陕西',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '吉林',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '福建',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '贵州',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '广东',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '青海',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '西藏',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '四川',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '宁夏',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '海南',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '台湾',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '香港',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    },
+                    {
+                        name: '澳门',
+                        value: Math.round(Math.random() * 1000),
+                        tipData: [Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+                    }
+                ]
+            }, ]
+        }
+
+
+        map.setOption(option);
+
+    </script>
+</body>
+</html>
